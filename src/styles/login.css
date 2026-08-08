@@ -1,0 +1,214 @@
+/* =========================================
+   [로그인 페이지 스타일] - 반응형 & Flex 기반
+   ========================================= */
+
+.login-root {
+  height: 100vh;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; /* 모바일에서 좌우 여백 확보 */
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%; /* 부모 너비에 맞춤 */
+  margin-bottom: 100px;
+}
+
+/* ★★★ 로고 컨테이너 스타일 추가 ★★★ */
+.login-logo-container {
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative; /* 자식 아이콘의 기준점 역할 */
+  display: inline-block; /* 내용물(이미지) 크기에 딱 맞게 줄어듦 -> 아이콘 위치 정확히 잡힘 */
+}
+
+/* ★★★ 로고 이미지 스타일 추가 ★★★ */
+.login-logo-img {
+  width: 350px;
+  height: auto;
+  display: block; /* 이미지 하단 공백 제거 */
+}
+
+.logo-badge-icon {
+  position: absolute;
+  top: 6px;    /* 위쪽으로 조금 나감 (조절 가능) */
+  right: -25px;  /* 오른쪽으로 조금 나감 (조절 가능) */
+  color: #333;   /* 아이콘 색상 (검정) */
+  /* 필요하다면 회전 등 추가 가능 */
+  /* transform: rotate(-10deg); */
+}
+
+/* 폼 컨테이너 */
+.login-form-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: stretch; /* 높이 맞춤 */
+
+  /* ★ 핵심: 고정 px 대신 비율과 최대 너비 사용 */
+  width: 100%;
+  max-width: 500px; /* 너무 넓어지는 것 방지 (원하는 만큼 조절 가능) */
+}
+
+/* 왼쪽 입력 그룹 (이메일, 비밀번호) */
+.login-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* ★ 핵심: 남은 공간을 입력창이 다 차지함 (길어짐) */
+  flex: 1;
+  min-width: 0; /* Flex 자식 요소 넘침 방지 안전장치 */
+}
+
+/* 공통 입력창 스타일 */
+.login-input {
+  width: 100%;
+  height: 52px; /* 높이 적당히 */
+  padding: 0 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #f5f5f5;
+  color: #333;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.login-input:focus {
+  background: #ebebeb;
+}
+
+.login-input::placeholder {
+  color: #aaa;
+}
+
+/* 비밀번호 컨테이너 */
+.password-container {
+  position: relative;
+  width: 100%;
+  height: 52px;
+}
+
+.password-input {
+  padding-right: 40px;
+}
+
+/* 눈 아이콘 버튼 */
+.eye-icon-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.eye-icon-btn:hover {
+  color: #333;
+}
+
+/* 우측 로그인 버튼 */
+.login-button-side {
+  background: #222;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  /* ★ 핵심: 버튼 너비를 줄이고 고정 (입력창이 더 길어보이게) */
+  width: 90px;
+  flex-shrink: 0; /* 화면 줄어들어도 버튼 크기는 유지 */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.login-button-side:hover {
+  background: #000;
+}
+
+.login-button-side:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+/* 에러 메시지 */
+.error-message {
+  color: #ff4444;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* 로딩 오버레이 */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #4a6ee0;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   [모바일 반응형] - 화면이 좁을 때 (480px 이하)
+   ========================================= */
+@media (max-width: 480px) {
+  .login-form-container {
+    flex-direction: column; /* 위아래로 쌓임 */
+    max-width: 100%;
+  }
+
+  .login-input-group {
+    width: 100%; /* 너비 꽉 채움 */
+  }
+
+  .login-button-side {
+    width: 100%; /* 버튼도 꽉 차게 변경 */
+    height: 52px; /* 높이 지정 */
+    margin-top: 5px;
+  }
+}

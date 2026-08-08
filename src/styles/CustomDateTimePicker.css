@@ -1,0 +1,204 @@
+/* 전체 카드 컨테이너 */
+.custom-datetime-card {
+  margin-left: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px; /* 사진 속 비율 유지를 위한 최대 너비 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+/* 헤더 (날짜 & 시간 타이틀) */
+.datetime-header h3 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* 현재 선택된 날짜 표시 박스 (회색 배경) */
+.current-selection-display {
+  background-color: #f4f5f8;
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+/* 메인 컨텐츠 (좌우 배치) */
+.datetime-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* --- 왼쪽: 시간 선택기 --- */
+.time-picker-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.time-date-label {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.digital-clock-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 거대한 시간 폰트 */
+.time-value {
+  font-size: 42px;
+  font-weight: 400;
+  color: #222;
+  line-height: 1;
+  margin: 5px 0;
+}
+
+.time-separator {
+  font-size: 42px;
+  font-weight: 400;
+  margin: 0 5px 15px 5px; /* 위치 조정을 위한 마진 */
+  color: #222;
+}
+
+/* 화살표 버튼 */
+.arrow-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.arrow-btn:hover {
+  color: #0095f6; /* 호버 시 파란색 */
+}
+
+/* --- 중앙 구분선 --- */
+.date-vertical-divider {
+  width: 1px;
+  background-color: #eee;
+  height: 220px; 
+  margin: 0 20px;
+}
+
+@media (max-width: 1024px) {
+  .date-vertical-divider {
+  display: none;
+}
+}
+
+/* --- 오른쪽: 달력 스타일 오버라이딩 --- */
+.date-picker-section {
+  flex: 1.2; /* 달력 영역을 조금 더 넓게 */
+  display: flex;
+  justify-content: center;
+}
+
+/* react-datepicker 내장 스타일 덮어쓰기 */
+.embedded-calendar {
+  border: none !important;
+  font-family: inherit !important;
+}
+
+.embedded-calendar .react-datepicker__header {
+  background-color: white !important;
+  border-bottom: none !important;
+  padding-top: 0 !important;
+}
+
+.embedded-calendar .react-datepicker__current-month {
+  font-size: 15px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.embedded-calendar .react-datepicker__day-name {
+  color: #888;
+  width: 2rem;
+  margin: 2px;
+}
+
+.embedded-calendar .react-datepicker__day {
+  width: 2rem;
+  line-height: 2rem;
+  margin: 2px;
+  color: #333;
+}
+
+/* 선택된 날짜 스타일 (사진 속 밝은 파란색 원) */
+.embedded-calendar .react-datepicker__day--selected,
+.embedded-calendar .react-datepicker__day--keyboard-selected {
+  background-color: #00a8ff !important; /* 사진과 유사한 밝은 파랑 */
+  color: white !important;
+  border-radius: 50% !important;
+  font-weight: bold;
+}
+
+/* 오늘 날짜 */
+.embedded-calendar .react-datepicker__day--today {
+  color: #00a8ff;
+  font-weight: 700;
+}
+.embedded-calendar
+  .react-datepicker__day--selected.react-datepicker__day--today {
+  color: white;
+}
+
+/* 달력 네비게이션 아이콘 스타일 */
+.react-datepicker__navigation-icon::before {
+  border-color: #888 !important;
+  border-width: 2px 2px 0 0 !important;
+}
+
+/* Datepicker 래퍼 (relative가 있어야 자식 absolute의 기준점이 됨) */
+.custom-datepicker-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* 기존 아이콘 버튼 위치 조정 */
+.custom-datepicker-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* ★ 핵심: 붕 떠있는 팝업 컨테이너 */
+.picker-popup-container {
+  position: absolute;
+  top: 50px; /* input 창 바로 아래 위치 (input 높이에 따라 조절) */
+  left: 0;
+  z-index: 9999; /* 다른 요소들보다 위에 뜨도록 */
+  background-color: transparent; /* 배경은 컴포넌트 자체가 가짐 */
+}
