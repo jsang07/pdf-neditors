@@ -7,10 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependencies
+# Frontend dependencies / build
 node_modules/
-
-# Build
 dist/
 dist-ssr/
 
@@ -18,14 +16,28 @@ dist-ssr/
 .env
 .env.*
 
+# Fonts
+frontend/src/assets/fonts/
+backend/fonts/
+
 # Firebase local/cache
 .firebase/
 .firebaserc
 
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Generated PDF files
+*.pdf
+
 # Local files
 *.local
 
-# Editor directories and files
+# Editor / OS
 .vscode/*
 !.vscode/extensions.json
 .idea/
