@@ -10,6 +10,24 @@ PDF 생성은 별도의 FastAPI 서버에서 처리하며, ReportLab으로 다�
 
 ---
 
+## Demo
+
+<p align="center">
+  <a href="https://youtu.be/VnUvxn7Jp3o?si=hhxrWq7YTgVN9PCf">
+    <img src="https://img.youtube.com/vi/VnUvxn7Jp3o/hqdefault.jpg"
+         alt="PDF Neditors Demo"
+         width="800">
+  </a>
+</p>
+
+<p align="center">
+  <b>▶ Click to watch the full demo</b>
+</p>
+
+> 실제 운영 서비스는 인증된 내부 사용자만 접근할 수 있습니다.
+
+---
+
 ## Tech Stack
 
 **Frontend**
