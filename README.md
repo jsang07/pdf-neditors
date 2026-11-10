@@ -51,7 +51,7 @@ PDF 생성은 별도의 FastAPI 서버에서 처리하며, ReportLab으로 다�
 - Firebase Hosting
 - Docker
 - Google Cloud Run
-- GitHub Actions
+- Google Cloud Build Trigger
 
 ---
 
@@ -317,12 +317,12 @@ Google Cloud Run
 ```
 
 실제 운영 Backend는 별도의 Private Repository에서 관리했으며,  
-GitHub Actions를 이용해 Cloud Run으로 자동 배포했습니다.
+Google Cloud Build Trigger를 이용해 Cloud Run으로 자동 배포했습니다.
 
 ```text
 Backend Push
     ↓
-GitHub Actions
+Google Cloud Build Trigger
     ↓
 Docker Build
     ↓
@@ -343,7 +343,7 @@ Google Cloud Run
 - API Key 및 Secret
 - Firebase / Google Cloud Credential
 - Service Account 정보
-- GitHub Actions 배포 Secret
+- 배포설정 및 Secret
 - 고객사 내부 운영 설정
 - 재배포 권한을 확인할 수 없는 Font 파일 및 일부 리소스
 
